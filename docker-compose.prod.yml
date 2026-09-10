@@ -5,6 +5,7 @@ services:
       dockerfile: Dockerfile
     environment:
       AUDITOR_DB: /app/data/auditor.db
+    user: "1000:1000"
     volumes:
       - ./data:/app/data
     restart: unless-stopped

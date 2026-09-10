@@ -7,7 +7,7 @@
 - [ ] README static version badge matches `VERSION`.
 - [ ] Release tag uses `v<major>.<minor>.<patch>`.
 - [ ] Canonical repository remains `cvsz/zcoin`.
-- [ ] Canonical public target remains `https://coin.zeaz.dev`.
+- [ ] Canonical public target remains `https://zcoin.zeaz.dev`.
 
 ## Application quality gates
 
@@ -32,9 +32,9 @@
 
 ## Cloudflare cutover
 
-- [ ] `cvsz/zworkforce` contains the reviewed `coin.zeaz.dev` DNS/Access/Tunnel configuration.
+- [ ] `cvsz/zworkforce` contains the reviewed `zcoin.zeaz.dev` DNS/Access/Tunnel configuration.
 - [ ] Existing shared-tunnel routes are preserved.
-- [ ] `coin.zeaz.dev` routes to `http://127.0.0.1:18082` before the catch-all 404 rule.
+- [ ] `zcoin.zeaz.dev` routes to `http://127.0.0.1:18082` before the catch-all 404 rule.
 - [ ] Cloudflare Access policy permits only intended operators.
 - [ ] Public hostname no longer returns the tunnel catch-all 404.
 - [ ] Public health/application request succeeds through Cloudflare.

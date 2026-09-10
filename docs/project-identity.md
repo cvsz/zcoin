@@ -2,7 +2,7 @@
 
 ## Canonical identity
 
-**zCoin — CoinFlip Evidence Auditor** is the canonical product name. The stable machine identifier is `dev.zeaz.zcoin`, the source repository is `cvsz/zcoin`, and the canonical public application hostname is `coin.zeaz.dev`.
+**zCoin — CoinFlip Evidence Auditor** is the canonical product name. The stable machine identifier is `dev.zeaz.zcoin`, the source repository is `cvsz/zcoin`, and the canonical public application hostname is `zcoin.zeaz.dev`.
 
 The project belongs to the ZeaZDev product family and is maintained under the public GitHub owner `cvsz`.
 
@@ -15,7 +15,7 @@ The project belongs to the ZeaZDev product family and is maintained under the pu
 | Project ID | `dev.zeaz.zcoin` |
 | Repository | `https://github.com/cvsz/zcoin` |
 | Product family | `ZeaZDev` |
-| Public hostname | `coin.zeaz.dev` |
+| Public hostname | `zcoin.zeaz.dev` |
 | API/runtime version | `0.3.1` |
 | Release tag | `v0.3.1` |
 | Release channel | `stable` |
@@ -39,7 +39,7 @@ Excluded scope includes live wagering automation, credential automation, hidden 
 ## Runtime identity
 
 ```text
-Public target       https://coin.zeaz.dev
+Public target       https://zcoin.zeaz.dev
 Cloudflare edge     cvsz/zworkforce
 Production origin   http://127.0.0.1:18082
 Gateway             Nginx
@@ -72,4 +72,4 @@ Badges must not imply that the public hostname is healthy merely because applica
 
 `v0.3.1` is the first release line with the complete evidence-auditor identity, hardened Docker packaging, production loopback gateway, statistical validation stack, security quality gates and reproducible release artifact workflow.
 
-Production availability at `coin.zeaz.dev` additionally requires the corresponding Cloudflare infrastructure to be active in `cvsz/zworkforce`.
+Production availability at `zcoin.zeaz.dev` additionally requires the corresponding Cloudflare infrastructure to be active in `cvsz/zworkforce`.

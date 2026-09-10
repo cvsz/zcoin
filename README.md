@@ -20,7 +20,7 @@
 [![Docker](https://img.shields.io/badge/Docker-ready-2496ED?logo=docker&logoColor=white)](Dockerfile)
 [![License](https://img.shields.io/github/license/cvsz/zcoin)](LICENSE)
 [![Scope](https://img.shields.io/badge/scope-audit%20%7C%20research%20%7C%20paper--only-6b7280)](SECURITY.md)
-[![Production Target](https://img.shields.io/badge/target-coin.zeaz.dev-F38020?logo=cloudflare&logoColor=white)](https://coin.zeaz.dev)
+[![Production Target](https://img.shields.io/badge/target-zcoin.zeaz.dev-F38020?logo=cloudflare&logoColor=white)](https://zcoin.zeaz.dev)
 
 **Repository:** `cvsz/zcoin` · **Project ID:** `dev.zeaz.zcoin` · **Release:** `v0.3.1`
 
@@ -40,7 +40,7 @@
 | Product family | `ZeaZDev` |
 | Repository owner | `cvsz` |
 | Canonical repository | `https://github.com/cvsz/zcoin` |
-| Canonical application URL | `https://coin.zeaz.dev` |
+| Canonical application URL | `https://zcoin.zeaz.dev` |
 | Current version | `0.3.1` |
 | Release channel | `stable` |
 | Runtime | Python 3.12 + FastAPI |
@@ -141,7 +141,7 @@ Production origin:
 `zcoin` owns the application and loopback gateway. `cvsz/zworkforce` owns DNS, Cloudflare Access and the shared tunnel. Intended mapping:
 
 ```text
-coin.zeaz.dev
+zcoin.zeaz.dev
     ↓
 Cloudflare Access
     ↓

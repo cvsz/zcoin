@@ -9,7 +9,7 @@ Cloudflare resources are intentionally not duplicated in this repository. Infras
 Expected route:
 
 ```text
-coin.zeaz.dev -> existing ZeaZDev Cloudflare Tunnel -> http://127.0.0.1:18082
+zcoin.zeaz.dev -> existing ZeaZDev Cloudflare Tunnel -> http://127.0.0.1:18082
 ```
 
 Expected controls:
@@ -29,4 +29,4 @@ cd ~/zcoin
 curl http://127.0.0.1:18082/backend-healthz
 ```
 
-Then apply the reviewed Cloudflare plan from `zworkforce` and verify `https://coin.zeaz.dev/`.
+Then apply the reviewed Cloudflare plan from `zworkforce` and verify `https://zcoin.zeaz.dev/`.

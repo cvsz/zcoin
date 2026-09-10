@@ -8,7 +8,7 @@
     "product_family": "ZeaZDev",
     "owner": "cvsz",
     "repository": "https://github.com/cvsz/zcoin",
-    "canonical_url": "https://coin.zeaz.dev",
+    "canonical_url": "https://zcoin.zeaz.dev",
     "version": "0.3.1",
     "release_channel": "stable",
     "license": "MIT"
@@ -54,7 +54,7 @@
       "Cloudflare Access",
       "Cloudflare Tunnel"
     ],
-    "public_hostname": "coin.zeaz.dev"
+    "public_hostname": "zcoin.zeaz.dev"
   },
   "release": {
     "version_source": "VERSION",

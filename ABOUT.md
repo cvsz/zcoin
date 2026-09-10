@@ -10,7 +10,7 @@
 - **Repository:** `https://github.com/cvsz/zcoin`
 - **Owner:** `cvsz`
 - **Product family:** ZeaZDev
-- **Canonical application URL:** `https://coin.zeaz.dev`
+- **Canonical application URL:** `https://zcoin.zeaz.dev`
 - **Current version:** `0.3.1`
 - **Release channel:** stable
 - **License:** MIT

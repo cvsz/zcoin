@@ -19,5 +19,5 @@
 - [x] CI / CodeQL / dependency review
 - [x] release ZIP + checksum workflow
 - [x] Cloudflare integration contract documented
-- [ ] confirmed live Cloudflare Access + tunnel evidence after infrastructure apply
+- [x] confirmed live Cloudflare Access + tunnel evidence after infrastructure apply
 - [ ] independently captured revealed-seed production fixture set
