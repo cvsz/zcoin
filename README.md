@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/assets/zcoin-banner.jpg" alt="zCoin — CoinFlip Evidence Auditor: evidence-first project banner showing verification, statistical analysis, reporting, production architecture, and research-only scope" width="100%">
+  <img src="docs/assets/zcoin.png" alt="zCoin — CoinFlip Evidence Auditor: evidence-first project banner showing verification, statistical analysis, reporting, production architecture, and research-only scope" width="100%">
 </p>
 
 <div align="center">
