@@ -1,19 +1,32 @@
 # Architecture
 
-Document the system context, major components, trust boundaries, data flows, external dependencies, persistence model, deployment model, scaling assumptions, failure modes, and security boundaries for the generated project.
+```text
+Historical CSV
+    |
+    v
+FastAPI ingest ----> SQLite
+    |
+    +--> seed commitment verification
+    +--> HMAC result reproduction
+    +--> nonce integrity
+    +--> statistical validation
+    +--> seed-epoch / holdout replication
+    +--> paper-only simulation
+    |
+    v
+JSON / HTML evidence report
 
-## Required sections
+Internet
+    |
+Cloudflare Access + Tunnel   [cvsz/zworkforce]
+    |
+127.0.0.1:18082
+    |
+Nginx gateway                [cvsz/zcoin]
+    |
+Docker internal network
+    |
+FastAPI :8000
+```
 
-- System context
-- Components and responsibilities
-- Data/storage model
-- External integrations
-- Authentication and authorization
-- Trust boundaries
-- Deployment topology
-- Observability
-- Availability and recovery
-- Security considerations
-- Known constraints
-
-Record material decisions as ADRs under `docs/adr/`.
+The application never needs a casino login. Full cryptographic verification uses server seeds only after reveal. The production origin is loopback-only.

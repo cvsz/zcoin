@@ -1,0 +1,33 @@
+services:
+  auditor:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      AUDITOR_DB: /app/data/auditor.db
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
+    networks: [zcoin_internal]
+
+  gateway:
+    image: nginx:1.27-alpine
+    depends_on:
+      auditor:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:${ZCOIN_HOST_PORT:-18082}:8080"
+    volumes:
+      - ./deploy/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8080/gateway-healthz"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+    networks: [zcoin_internal]
+
+networks:
+  zcoin_internal:
+    driver: bridge

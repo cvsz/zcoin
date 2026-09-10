@@ -13,33 +13,31 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  repository-baseline:
+  python:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: python -m compileall -q app tests
+      - run: PYTHONPATH=. pytest -q
 
-      - name: Validate required template files
-        shell: bash
-        run: |
-          set -euo pipefail
-          required=(
-            README.md
-            ABOUT.md
-            CONTRIBUTING.md
-            SECURITY.md
-            CODE_OF_CONDUCT.md
-            CHANGELOG.md
-            ROADMAP.md
-            IMPLEMENTATION-CHECKLIST.md
-            .github/PULL_REQUEST_TEMPLATE.md
-            .github/dependabot.yml
-          )
-          for path in "${required[@]}"; do
-            test -f "$path" || { echo "Missing required file: $path"; exit 1; }
-          done
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker compose config >/dev/null
+      - run: docker compose -f docker-compose.prod.yml config >/dev/null
+      - run: docker build -t zcoin:${{ github.sha }} .
 
-      - name: Check for common secret file names
+  repository-security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject common secret-bearing files
         shell: bash
         run: |
           set -euo pipefail
@@ -47,8 +45,11 @@ jobs:
             echo 'Potential secret-bearing file is tracked.'
             exit 1
           fi
-
-      - name: Validate YAML syntax
+      - name: Guard audit-only scope
         shell: bash
         run: |
-          ruby -e 'require "yaml"; Dir.glob(".github/**/*.{yml,yaml}").each { |f| YAML.load_file(f); puts "ok #{f}" }'
+          set -euo pipefail
+          if git grep -nEi '(place[_ -]?bet|auto[_ -]?bet|wager[_ -]?endpoint|session[_ -]?cookie)' -- '*.py' '*.js' '*.ts' ':!tests/*'; then
+            echo 'Review required: live/account betting automation marker found.'
+            exit 1
+          fi

@@ -1,49 +1,31 @@
-# Environment and secrets
+# Environment / secrets
 .env
 .env.*
 !.env.example
 *.pem
 *.key
 
-# Dependencies
-node_modules/
+# Python
 .venv/
 venv/
 __pycache__/
 *.py[cod]
-
-# Build output
-dist/
-build/
-coverage/
-.next/
-.nuxt/
-.out/
-
-# Tool caches
-.cache/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
-.eslintcache
 
-# IDE / OS
+# Runtime evidence data
+data/*.db
+data/*.sqlite*
+data/*.csv
+!sample.csv
+
+# Build / IDE / OS
+build/
+dist/
+coverage/
 .DS_Store
 Thumbs.db
 .idea/
-.vscode/*
-!.vscode/extensions.json
-!.vscode/settings.json
-
-# Logs
+.vscode/
 *.log
-logs/
-
-# Terraform
-.terraform/
-*.tfstate
-*.tfstate.*
-
-# Local runtime data
-.tmp/
-tmp/

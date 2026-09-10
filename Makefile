@@ -1,26 +1,29 @@
-SHELL := /bin/sh
+.PHONY: install run test lint compose-check prod-build deploy verify release-check
 
-.PHONY: help setup format lint test build security ci
+install:
+	python -m pip install -r requirements.txt
 
-help:
-	@printf '%s\n' 'Targets: setup format lint test build security ci'
-
-setup:
-	@echo 'Replace with project bootstrap command.'
-
-format:
-	@echo 'Replace with project formatter command.'
-
-lint:
-	@echo 'Replace with project lint command.'
+run:
+	uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
 
 test:
-	@echo 'Replace with project test command.'
+	PYTHONPATH=. pytest -q
 
-build:
-	@echo 'Replace with project build command.'
+lint:
+	python -m compileall -q app tests
 
-security:
-	@echo 'Use repository security workflows and add stack-specific scanners.'
+compose-check:
+	docker compose config >/dev/null
+	docker compose -f docker-compose.prod.yml config >/dev/null
 
-ci: lint test build security
+prod-build:
+	docker compose -f docker-compose.prod.yml build
+
+deploy:
+	./deploy/deploy.sh
+
+verify:
+	./deploy/verify.sh
+
+release-check: lint test
+	@echo "zCoin release checks passed"
