@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "project": {
+    "id": "dev.zeaz.zcoin",
+    "name": "zCoin",
+    "display_name": "zCoin — CoinFlip Evidence Auditor",
+    "slug": "zcoin",
+    "product_family": "ZeaZDev",
+    "owner": "cvsz",
+    "repository": "https://github.com/cvsz/zcoin",
+    "canonical_url": "https://coin.zeaz.dev",
+    "version": "0.3.1",
+    "release_channel": "stable",
+    "license": "MIT"
+  },
+  "purpose": {
+    "mission": "Verify historical CoinFlip outcomes and evaluate apparent statistical edges using reproducible cryptographic and statistical evidence.",
+    "operating_mode": "audit-research-paper-only",
+    "capabilities": [
+      "revealed-seed HMAC-SHA256 outcome verification",
+      "SHA-256 seed commitment verification",
+      "nonce and sequence-integrity auditing",
+      "statistical bias and independence analysis",
+      "bootstrap and Bayesian inference",
+      "multiple-testing correction",
+      "chronological holdout validation",
+      "seed-epoch replication analysis",
+      "Monte Carlo null simulation",
+      "JSON and HTML evidence reporting"
+    ],
+    "explicit_non_goals": [
+      "live wagering automation",
+      "hidden server-seed acquisition",
+      "authentication or authorization bypass",
+      "account credential automation",
+      "guaranteed-win claims"
+    ]
+  },
+  "runtime": {
+    "language": "Python",
+    "language_version": "3.12+",
+    "framework": "FastAPI",
+    "database": "SQLite",
+    "container": "Docker",
+    "gateway": "Nginx",
+    "application_port": 8000,
+    "production_origin": "http://127.0.0.1:18082"
+  },
+  "infrastructure": {
+    "application_owner_repository": "cvsz/zcoin",
+    "edge_owner_repository": "cvsz/zworkforce",
+    "edge": [
+      "Cloudflare DNS",
+      "Cloudflare Access",
+      "Cloudflare Tunnel"
+    ],
+    "public_hostname": "coin.zeaz.dev"
+  },
+  "release": {
+    "version_source": "VERSION",
+    "tag_pattern": "v*",
+    "workflow": ".github/workflows/release.yml",
+    "artifact_pattern": "zcoin-v*.zip",
+    "checksum": "SHA-256",
+    "required_gates": [
+      "pytest",
+      "python compileall",
+      "Docker build",
+      "Docker Compose validation",
+      "repository security guard",
+      "Dependency Review",
+      "CodeQL"
+    ]
+  }
+}

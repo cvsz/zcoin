@@ -1,111 +1,51 @@
-# About cvsz
+# About zCoin
 
-`cvsz` is a builder focused on AI-first software, developer platforms, automation, infrastructure, and production-grade systems.
+**zCoin — CoinFlip Evidence Auditor** is a ZeaZDev project maintained in `cvsz/zcoin` for reproducible historical outcome verification, statistical evidence analysis, and paper-only simulation.
 
-## Focus areas
+## Identity
 
-- AI coding tools and autonomous/agentic systems
-- AI application platforms and OpenAI-compatible integrations
-- Developer platforms, APIs, SDKs, and internal tooling
-- Platform engineering, infrastructure automation, CI/CD, and DevOps
-- Security-aware architecture, repository hardening, and engineering quality gates
-- Workflow automation, bots, social automation, and commerce integrations
-- Payment, wallet, ledger, and financial-system architecture
-- Media, streaming, multimodal, speech, image, OCR, and search systems
-- Gaming and interactive application infrastructure
-- OpenAPI tooling and service integration
+- **Product:** zCoin
+- **Full name:** zCoin — CoinFlip Evidence Auditor
+- **Project ID:** `dev.zeaz.zcoin`
+- **Repository:** `https://github.com/cvsz/zcoin`
+- **Owner:** `cvsz`
+- **Product family:** ZeaZDev
+- **Canonical application URL:** `https://coin.zeaz.dev`
+- **Current version:** `0.3.1`
+- **Release channel:** stable
+- **License:** MIT
+- **Primary runtime:** Python 3.12 / FastAPI
+- **Production gateway:** Nginx on `127.0.0.1:18082`
+- **Edge boundary:** Cloudflare Access + Tunnel managed by `cvsz/zworkforce`
 
-## Current engineering interests
+## Mission
 
-### AI and agents
+zCoin exists to replace guesswork with reproducible evidence. It verifies historical revealed-seed CoinFlip results, checks seed commitments and sequence integrity, measures distributional and serial anomalies, applies multiple-testing correction and out-of-sample validation, and produces evidence reports that distinguish random variation from stronger implementation or statistical signals.
 
-Building practical AI systems that combine coding agents, tool use, model routing, multimodal capabilities, automation, and production infrastructure.
+## Core capabilities
 
-Areas of interest include:
+- HMAC-SHA256 outcome reproduction for supported historical verifier mappings
+- SHA-256 server-seed commitment verification
+- nonce and sequence-integrity auditing
+- idempotent dataset ingestion and deterministic evidence fingerprints
+- proportion, runs, streak, autocorrelation, transition and change-point analysis
+- Bootstrap and Bayesian inference around break-even probability
+- Benjamini-Hochberg false-discovery-rate correction
+- chronological train/holdout validation
+- seed-epoch segmentation and replication checks
+- conservative evidence scoring and classification
+- paper-only strategy comparison, walk-forward analysis and Monte Carlo null simulation
+- JSON and printable HTML evidence reports
+- Dockerized local/production runtime with CI, CodeQL and dependency-review gates
 
-- coding assistants and autonomous coding workflows
-- multi-agent orchestration
-- tool and API integrations
-- OpenAI-compatible model providers
-- model fallback and routing strategies
-- text, image, speech, embeddings, OCR, search, and video capabilities
-- reusable agent and project generators
+## Security and scope
 
-### Platform engineering
+zCoin is intentionally an **audit/research/paper-only** system. It does not contain live wagering automation, credential automation, hidden-seed acquisition, authentication bypass, exploitation workflows, or guaranteed-win logic.
 
-Designing reusable foundations for products and services with an emphasis on:
+Only historical data that the operator is authorized to use should be ingested. Revealed server seeds may be used for retrospective verification. Passwords, cookies, access tokens, private account material and unrevealed secrets must not be committed or uploaded as datasets.
 
-- modular service architecture
-- APIs and SDKs
-- containerized development and deployment
-- CI/CD automation
-- observability
-- security scanning
-- dependency automation
-- reproducible environments
-- scalable infrastructure
+## Release identity
 
-### Automation and integrations
+The authoritative human-readable project identity is documented in `docs/project-identity.md`. The machine-readable contract is `PROJECT_IDENTITY.json`. The repository `VERSION` file remains the canonical source version used for release packaging.
 
-Projects and experiments include automation around platforms and services such as:
-
-- LINE
-- TikTok Shop
-- social and commerce workflows
-- OpenAPI-based services
-- bots and event-driven automation
-
-### Payments and financial systems
-
-Interest in robust financial architecture including:
-
-- wallets
-- ledgers
-- accounting-style transaction models
-- payment services
-- auditability
-- safe transaction processing
-
-### Engineering philosophy
-
-Projects should aim to be:
-
-- secure by default
-- automation-first
-- modular and reusable
-- easy to operate
-- observable
-- testable
-- documented
-- production-oriented
-- friendly to incremental improvement
-
-Security and quality checks should be fixed rather than bypassed. Infrastructure, CI, documentation, and operational readiness are treated as part of the product rather than afterthoughts.
-
-## Public project themes
-
-The `cvsz` GitHub portfolio spans a broad collection of repositories covering areas such as:
-
-- AI tools and AI coding systems
-- agent generators and agent platforms
-- platform and infrastructure projects
-- automation and bot systems
-- payment and wallet systems
-- OpenAPI tooling
-- media and streaming projects
-- gaming projects
-- security, tracking, and operational tooling
-- general developer utilities
-
-## Preferred project direction
-
-The goal of this repository template is to provide a strong starting point for future projects so that new repositories begin with engineering discipline already in place: documentation, security policy, CI, dependency maintenance, release structure, issue/PR workflows, architecture guidance, and a clear implementation checklist.
-
-## GitHub
-
-- Handle: `cvsz`
-- Repository namespace: `github.com/cvsz`
-
----
-
-This profile intentionally contains only public-safe technical and project information. Personal, private, credential, account, and sensitive identity information should not be added to a public repository template.
+A GitHub release is produced from a `v*` tag only after automated test, Docker, dependency and security gates pass.

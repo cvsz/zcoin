@@ -1,12 +1,84 @@
-# zCoin — CoinFlip Evidence Auditor
+<div align="center">
 
-`zCoin` is an offline-first audit stack for verifying revealed-seed CoinFlip history and testing whether an apparent statistical edge survives integrity checks, multiple-testing correction, holdout validation, seed-epoch replication, and Monte Carlo baselines.
+# zCoin
 
-**Public target:** `https://coin.zeaz.dev`  
-**Production origin:** `http://127.0.0.1:18082`  
-**Version:** `0.3.1`
+### CoinFlip Evidence Auditor
 
-> Verification, research, and paper simulation only. This repository does not place live bets, obtain hidden server seeds, bypass authentication, or claim guaranteed wins.
+**Verify randomness. Measure evidence. Reject guesswork.**
+
+[![Release](https://img.shields.io/github/v/release/cvsz/zcoin?display_name=tag&sort=semver&label=release)](https://github.com/cvsz/zcoin/releases)
+[![Version](https://img.shields.io/badge/version-0.3.1-2563eb)](VERSION)
+[![CI](https://github.com/cvsz/zcoin/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/cvsz/zcoin/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/cvsz/zcoin/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/cvsz/zcoin/actions/workflows/codeql.yml)
+[![Dependency Review](https://github.com/cvsz/zcoin/actions/workflows/dependency-review.yml/badge.svg?branch=main)](https://github.com/cvsz/zcoin/actions/workflows/dependency-review.yml)
+[![Python](https://img.shields.io/badge/Python-3.12%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![Docker](https://img.shields.io/badge/Docker-ready-2496ED?logo=docker&logoColor=white)](Dockerfile)
+[![License](https://img.shields.io/github/license/cvsz/zcoin)](LICENSE)
+[![Scope](https://img.shields.io/badge/scope-audit%20%7C%20research%20%7C%20paper--only-6b7280)](SECURITY.md)
+[![Production Target](https://img.shields.io/badge/target-coin.zeaz.dev-F38020?logo=cloudflare&logoColor=white)](https://coin.zeaz.dev)
+
+**Repository:** `cvsz/zcoin` · **Project ID:** `dev.zeaz.zcoin` · **Release:** `v0.3.1`
+
+</div>
+
+---
+
+## Project identity
+
+| Field | Identity |
+|---|---|
+| Product | **zCoin** |
+| Full name | **zCoin — CoinFlip Evidence Auditor** |
+| Project ID | `dev.zeaz.zcoin` |
+| Product family | `ZeaZDev` |
+| Repository owner | `cvsz` |
+| Canonical repository | `https://github.com/cvsz/zcoin` |
+| Canonical application URL | `https://coin.zeaz.dev` |
+| Current version | `0.3.1` |
+| Release channel | `stable` |
+| Runtime | Python 3.12 + FastAPI |
+| Persistence | SQLite, local persistent volume |
+| Production gateway | Nginx on `127.0.0.1:18082` |
+| Edge security | Cloudflare Access + Tunnel, owned by `cvsz/zworkforce` |
+| License | MIT |
+| Operating mode | Historical verification, evidence analysis, paper simulation |
+
+The machine-readable identity contract lives in [`PROJECT_IDENTITY.json`](PROJECT_IDENTITY.json), with the complete identity and release policy documented in [`docs/project-identity.md`](docs/project-identity.md).
+
+> **Scope boundary:** zCoin verifies revealed-seed history and measures statistical evidence. It does not place live bets, obtain hidden server seeds, bypass authentication, automate accounts, or claim guaranteed wins.
+
+## What zCoin does
+
+`zCoin` is an offline-first audit stack for verifying revealed-seed CoinFlip history and testing whether an apparent statistical edge survives cryptographic integrity checks, multiple-testing correction, holdout validation, seed-epoch replication, Bayesian/Bootstrap analysis, and Monte Carlo null baselines.
+
+### Evidence pipeline
+
+```text
+Historical exported data
+        ↓
+Schema + duplicate validation
+        ↓
+Server-seed commitment verification
+        ↓
+HMAC-SHA256 outcome reproduction
+        ↓
+Nonce / sequence integrity audit
+        ↓
+Distribution + independence analysis
+        ↓
+Bootstrap + Bayesian inference
+        ↓
+BH-FDR multiple-testing correction
+        ↓
+Chronological holdout validation
+        ↓
+Cross-seed-epoch replication
+        ↓
+Economic break-even gate
+        ↓
+Evidence classification + report
+```
 
 ## Features
 
@@ -21,11 +93,18 @@
 - seed-epoch segmentation and Benjamini-Hochberg FDR correction
 - conservative evidence scoring and classification
 - paper-only strategy comparison, walk-forward simulation and Monte Carlo null models
+- deterministic dataset SHA-256 evidence fingerprints
 - JSON evidence bundles and printable HTML reports
 - FastAPI dashboard/API
 - non-root Docker runtime
 - loopback-only production Nginx gateway on `18082`
 - CI, CodeQL, dependency review, release ZIP + SHA-256
+
+## Release quality gates
+
+A release is considered publishable only when the repository passes the automated test suite, Python compilation, Docker build, Compose validation, repository secret/scope guards, Dependency Review, and CodeQL. Tag pushes matching `v*` run the release workflow, rebuild/test the project, package a source ZIP, generate a SHA-256 checksum, and publish a GitHub Release.
+
+Current application release: **v0.3.1**. Public production cutover additionally depends on the Cloudflare DNS/Access/Tunnel configuration owned by `cvsz/zworkforce`.
 
 ## Quick start
 
@@ -56,10 +135,20 @@ Production origin:
 `zcoin` owns the application and loopback gateway. `cvsz/zworkforce` owns DNS, Cloudflare Access and the shared tunnel. Intended mapping:
 
 ```text
-coin.zeaz.dev -> Cloudflare Access -> existing tunnel -> 127.0.0.1:18082 -> Nginx -> auditor:8000
+coin.zeaz.dev
+    ↓
+Cloudflare Access
+    ↓
+Cloudflare Tunnel
+    ↓
+127.0.0.1:18082
+    ↓
+Nginx gateway
+    ↓
+auditor:8000
 ```
 
-Do not reuse `18080`; it belongs to zDash. See `docs/cloudflare.md` before changing tunnel state.
+Do not reuse `18080`; it belongs to zDash. See [`docs/cloudflare.md`](docs/cloudflare.md) before changing tunnel state.
 
 ## CSV input
 
