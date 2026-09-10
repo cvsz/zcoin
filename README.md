@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/assets/zcoin-banner.jpg" alt="zCoin — CoinFlip Evidence Auditor: evidence-first project banner showing verification, statistical analysis, reporting, production architecture, and research-only scope" width="100%">
+</p>
+
 <div align="center">
 
 # zCoin
@@ -19,6 +23,8 @@
 [![Production Target](https://img.shields.io/badge/target-coin.zeaz.dev-F38020?logo=cloudflare&logoColor=white)](https://coin.zeaz.dev)
 
 **Repository:** `cvsz/zcoin` · **Project ID:** `dev.zeaz.zcoin` · **Release:** `v0.3.1`
+
+[Brand assets](docs/BRANDING.md) · [Project identity](docs/project-identity.md) · [Production runbook](docs/production.md)
 
 </div>
 

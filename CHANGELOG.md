@@ -13,6 +13,7 @@
 - Added canonical zCoin project identity (`dev.zeaz.zcoin`) in human-readable and machine-readable forms.
 - Added release, CI, CodeQL, Dependency Review, runtime, license, scope and production-target badges.
 - Added a production release checklist that separates application release readiness from Cloudflare production cutover.
+- Added official zCoin README hero banner and GitHub social-preview artwork under `docs/assets/`, plus documented brand usage guidance in `docs/BRANDING.md`.
 
 ## 0.3.0
 
