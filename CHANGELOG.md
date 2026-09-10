@@ -10,6 +10,9 @@
 - Added idempotent deploy/verify scripts with forced gateway recreation.
 - Added Cloudflare ownership/runbook documentation for `cvsz/zworkforce`.
 - Expanded CI and release checks.
+- Added canonical zCoin project identity (`dev.zeaz.zcoin`) in human-readable and machine-readable forms.
+- Added release, CI, CodeQL, Dependency Review, runtime, license, scope and production-target badges.
+- Added a production release checklist that separates application release readiness from Cloudflare production cutover.
 
 ## 0.3.0
 
