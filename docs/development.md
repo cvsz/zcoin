@@ -1,21 +1,11 @@
 # Development
 
-## Local setup
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+make test
+make run
+```
 
-1. Clone the generated repository.
-2. Copy `.env.example` to `.env` and populate local-only values.
-3. Install the selected runtime and dependencies.
-4. Replace placeholder `Makefile` targets with real project commands.
-5. Run formatting, linting, tests, build, and security checks before opening a pull request.
-
-## Quality expectations
-
-- Keep changes small and reviewable.
-- Add tests for behavior changes.
-- Prefer deterministic and reproducible tooling.
-- Do not commit secrets or local credentials.
-- Do not weaken security or CI gates to obtain a passing build.
-
-## Documentation
-
-Update architecture, development, release, and ADR documentation when behavior or operational assumptions change.
+Tests cover verifier vectors, ingest idempotency, evidence integrity gating, statistical helpers, report escaping and paper-only strategy behavior.

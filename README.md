@@ -1,78 +1,101 @@
-# ztemplate
+# zCoin — CoinFlip Evidence Auditor
 
-A production-ready, reusable GitHub repository template for starting new projects with consistent engineering, security, documentation, automation, and release practices.
+`zCoin` is an offline-first audit stack for verifying revealed-seed CoinFlip history and testing whether an apparent statistical edge survives integrity checks, multiple-testing correction, holdout validation, seed-epoch replication, and Monte Carlo baselines.
 
-## Included
+**Public target:** `https://coin.zeaz.dev`  
+**Production origin:** `http://127.0.0.1:18082`  
+**Version:** `0.3.1`
 
-- Issue and pull request templates
-- CODEOWNERS and repository contribution guidance
-- Security policy and support policy
-- CI workflow baseline
-- CodeQL security scanning
-- Dependency Review for pull requests
-- Dependabot configuration
-- Release workflow and release notes configuration
-- Conventional commit / PR guidance
-- EditorConfig, Git attributes, and Git ignore baseline
-- Community health files
-- Documentation structure
-- Changelog and roadmap templates
-- Implementation checklist
-- Architecture Decision Record (ADR) template
-- Environment example
-- Docker baseline
-- Makefile task entrypoints
+> Verification, research, and paper simulation only. This repository does not place live bets, obtain hidden server seeds, bypass authentication, or claim guaranteed wins.
 
-## Start from this template
+## Features
 
-1. Use this repository as a GitHub template repository.
-2. Create a new repository from the template.
-3. Replace placeholder project metadata.
-4. Review and customize `.github/CODEOWNERS`, `SECURITY.md`, CI matrices, and release settings.
-5. Add language/framework-specific workflows only when the project needs them.
+- old/new HMAC-SHA256 CoinFlip verifier mappings
+- SHA-256 revealed server-seed commitment checks
+- idempotent CSV ingestion with SQLite persistence
+- nonce duplicate/gap/order auditing
+- proportion, runs, streak, autocorrelation and transition analysis
+- bootstrap 99% confidence intervals
+- Bayesian posterior probability above economic break-even
+- change-point signals and chronological train/holdout validation
+- seed-epoch segmentation and Benjamini-Hochberg FDR correction
+- conservative evidence scoring and classification
+- paper-only strategy comparison, walk-forward simulation and Monte Carlo null models
+- JSON evidence bundles and printable HTML reports
+- FastAPI dashboard/API
+- non-root Docker runtime
+- loopback-only production Nginx gateway on `18082`
+- CI, CodeQL, dependency review, release ZIP + SHA-256
 
-## Repository structure
+## Quick start
 
-```text
-.github/
-  ISSUE_TEMPLATE/
-  workflows/
-  CODEOWNERS
-  CONTRIBUTING.md
-  PULL_REQUEST_TEMPLATE.md
-  dependabot.yml
-  release.yml
-  SUPPORT.md
-docs/
-  adr/
-  architecture.md
-  development.md
-  release.md
-.env.example
-.editorconfig
-.gitattributes
-.gitignore
-CHANGELOG.md
-CODE_OF_CONDUCT.md
-Dockerfile
-IMPLEMENTATION-CHECKLIST.md
-LICENSE
-Makefile
-README.md
-ROADMAP.md
-SECURITY.md
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+PYTHONPATH=. pytest -q
+uvicorn app.main:app --host 127.0.0.1 --port 8000
 ```
 
-## Principles
+Docker development:
 
-- Secure by default
-- Least privilege for GitHub Actions
-- Reproducible automation
-- Small, reviewable pull requests
-- Documentation as part of delivery
-- No weakening of security gates to make CI green
-- Explicit release and rollback practices
+```bash
+docker compose up --build -d
+curl http://127.0.0.1:8000/healthz
+```
 
-## License
+Production origin:
 
-MIT. See `LICENSE`.
+```bash
+./deploy/deploy.sh
+./deploy/verify.sh
+```
+
+## Cloudflare ownership boundary
+
+`zcoin` owns the application and loopback gateway. `cvsz/zworkforce` owns DNS, Cloudflare Access and the shared tunnel. Intended mapping:
+
+```text
+coin.zeaz.dev -> Cloudflare Access -> existing tunnel -> 127.0.0.1:18082 -> Nginx -> auditor:8000
+```
+
+Do not reuse `18080`; it belongs to zDash. See `docs/cloudflare.md` before changing tunnel state.
+
+## CSV input
+
+Minimum:
+
+```csv
+client_seed,nonce,reported_result
+client-a,1001,0
+client-a,1002,1
+```
+
+Full audit history after server-seed reveal:
+
+```csv
+ts,bet_id,server_seed,server_seed_hash,client_seed,nonce,round,reported_result,amount,payout_multiplier
+2026-09-10T10:00:00Z,b1,REVEALED_SEED,SHA256_COMMITMENT,CLIENT,1001,1,0,1,1.98
+```
+
+Never put passwords, cookies, access tokens, account credentials, or unrevealed secrets in datasets.
+
+## API
+
+```text
+GET    /healthz
+GET    /api/version
+POST   /api/verify
+POST   /api/ingest
+GET    /api/datasets
+GET    /api/analysis/{dataset}
+GET    /api/advanced/{dataset}
+GET    /api/evidence/{dataset}
+DELETE /api/datasets/{dataset}
+GET    /api/paper/compare/{dataset}
+GET    /api/paper/walk-forward/{dataset}
+GET    /api/paper/monte-carlo/{dataset}
+GET    /report/{dataset}
+```
+
+The strongest evidence classification requires complete cryptographic result coverage and independent replication. A historical anomaly is not a prediction of the next flip.

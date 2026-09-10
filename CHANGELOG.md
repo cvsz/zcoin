@@ -1,21 +1,16 @@
 # Changelog
 
-All notable changes to projects created from this template should be documented here.
+## 0.3.1
 
-The format is based on Keep a Changelog and projects are encouraged to follow Semantic Versioning.
+- Replaced repository template placeholders with the complete zCoin evidence-auditor application.
+- Hardened CSV validation and symmetric result-0/result-1 edge assessment.
+- Escaped HTML evidence-report inputs.
+- Added non-root Docker runtime and loopback-only bindings.
+- Added production Nginx gateway at `127.0.0.1:18082` to avoid zDash `18080`.
+- Added idempotent deploy/verify scripts with forced gateway recreation.
+- Added Cloudflare ownership/runbook documentation for `cvsz/zworkforce`.
+- Expanded CI and release checks.
 
-## [Unreleased]
+## 0.3.0
 
-### Added
-
-- Repository template baseline
-- Security and contribution policies
-- GitHub issue and pull request templates
-- CI, CodeQL, dependency review, and Dependabot automation
-- Release workflow and project documentation structure
-
-### Changed
-
-### Fixed
-
-### Security
+- Added advanced evidence validation, FDR correction, bootstrap/Bayesian analysis, holdout validation, seed-epoch replication, evidence scoring and reports.
